@@ -6,4 +6,4 @@ FILE(GLOB_RECURSE all_files
 *.C)
 
 ADD_EXECUTABLE(cygnet-test ${all_files})
-TARGET_LINK_LIBRARIES(cygnet-test cut)
+TARGET_LINK_LIBRARIES(cygnet-test cut cub)

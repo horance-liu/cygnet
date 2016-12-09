@@ -4,3 +4,7 @@ build/
 # vi
 *.swp
 
+# eclipse
+.settings/
+.project
+.cproject
