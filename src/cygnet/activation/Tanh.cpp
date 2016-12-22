@@ -3,14 +3,14 @@
 
 CYGNET_NS_BEGIN
 
-Float Tanh::eval(Float x)  const
+Float Tanh::eval(const Vector& v, Index i)  const
 {
-    return std::tanh(x);
+    return std::tanh(v[i]);
 }
 
 Float Tanh::derivative(Float y) const
 {
-    return 1 - y*y;
+    return 1 - y * y;
 }
 
 CYGNET_NS_END

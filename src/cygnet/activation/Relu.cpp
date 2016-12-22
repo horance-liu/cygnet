@@ -2,9 +2,9 @@
 
 CYGNET_NS_BEGIN
 
-Float Relu::eval(Float x)  const
+Float Relu::eval(const Vector& v, Index i)  const
 {
-    return x > 0 ? x : 0;
+    return v[i] > 0 ? v[i] : 0;
 }
 
 Float Relu::derivative(Float y) const

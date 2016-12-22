@@ -2,9 +2,9 @@
 
 CYGNET_NS_BEGIN
 
-Float Identity::eval(Float x)  const
+Float Identity::eval(const Vector& v, Index i)  const
 {
-    return x;
+    return v[i];
 }
 
 Float Identity::derivative(Float /*y*/) const

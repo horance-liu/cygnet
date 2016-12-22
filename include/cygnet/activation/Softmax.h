@@ -1,11 +1,11 @@
-#ifndef H5C9B4428_7C1E_4FB7_BFFF_4532B244D622
-#define H5C9B4428_7C1E_4FB7_BFFF_4532B244D622
+#ifndef H70A8AC09_468A_4466_83D2_86E3DB2F96B5
+#define H70A8AC09_468A_4466_83D2_86E3DB2F96B5
 
 #include <cygnet/base/Vector.h>
 
 CYGNET_NS_BEGIN
 
-struct Tanh
+struct Softmax
 {
     Float eval(const Vector& v, Index i)  const;
     Float derivative(Float) const;

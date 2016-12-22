@@ -3,9 +3,9 @@
 
 CYGNET_NS_BEGIN
 
-Float Sigmoid::eval(Float x)  const
+Float Sigmoid::eval(const Vector& v, Index i)  const
 {
-    return 1 / (1 + std::exp(-x));
+    return 1 / (1 + std::exp(-v[i]));
 }
 
 Float Sigmoid::derivative(Float y) const
