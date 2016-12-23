@@ -1,0 +1,14 @@
+#ifndef HE63E516E_8E06_4B9C_860D_354D206F8F15
+#define HE63E516E_8E06_4B9C_860D_354D206F8F15
+
+#include <cygnet/cygnet.h>
+
+CYGNET_NS_BEGIN
+
+struct Network
+{
+};
+
+CYGNET_NS_END
+
+#endif

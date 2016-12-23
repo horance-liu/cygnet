@@ -1,0 +1,14 @@
+#ifndef HA9CD5BA9_14AD_4819_A33C_CE33B95A8455
+#define HA9CD5BA9_14AD_4819_A33C_CE33B95A8455
+
+#include <cygnet/cygnet.h>
+
+CYGNET_NS_BEGIN
+
+struct Layer
+{
+};
+
+CYGNET_NS_END
+
+#endif
