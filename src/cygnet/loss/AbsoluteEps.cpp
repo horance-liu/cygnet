@@ -6,7 +6,7 @@ CYGNET_NS_BEGIN
 AbsoluteEps::AbsoluteEps(Float fraction) : eps(1 / fraction)
 {}
 
-Float AbsoluteEps::eval(const Vector& y, const Vector& t)
+Float AbsoluteEps::eval(const Vector& y, const Vector& t) const
 {
     Float d = Float(0);
     for(decltype(y.size()) i = 0; i < y.size(); ++i) {
@@ -17,7 +17,7 @@ Float AbsoluteEps::eval(const Vector& y, const Vector& t)
     return d / y.size();
 }
 
-void AbsoluteEps::derivative(const Vector& y, const Vector& t, Vector& d)
+void AbsoluteEps::derivative(const Vector& y, const Vector& t, Vector& d) const
 {
     const Float factor = Float(1) / static_cast<Float>(t.size());
 

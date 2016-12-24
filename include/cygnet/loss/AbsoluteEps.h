@@ -10,8 +10,8 @@ struct AbsoluteEps : Loss
     explicit AbsoluteEps(Float fraction);
 
 private:
-    Float eval(const Vector& y, const Vector& t) override;
-    void derivative(const Vector& y, const Vector& t, Vector& d) override;
+    Float eval(const Vector& y, const Vector& t) const override;
+    void derivative(const Vector& y, const Vector& t, Vector& d) const override;
 
 private:
     Float eps;

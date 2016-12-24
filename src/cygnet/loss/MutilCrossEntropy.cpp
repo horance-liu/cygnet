@@ -3,7 +3,7 @@
 
 CYGNET_NS_BEGIN
 
-Float MutilCrossEntropy::eval(const Vector& y, const Vector& t)
+Float MutilCrossEntropy::eval(const Vector& y, const Vector& t) const
 {
     Float d = 0;
     for(decltype(y.size()) i = 0; i < y.size(); ++i)
@@ -11,7 +11,7 @@ Float MutilCrossEntropy::eval(const Vector& y, const Vector& t)
     return d;
 }
 
-void MutilCrossEntropy::derivative(const Vector& y, const Vector& t, Vector& d)
+void MutilCrossEntropy::derivative(const Vector& y, const Vector& t, Vector& d) const
 {
     for(decltype(y.size()) i = 0; i < y.size(); ++i)
         d[i] = -(t[i] / y[i]);

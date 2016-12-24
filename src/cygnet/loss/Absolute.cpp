@@ -3,7 +3,7 @@
 
 CYGNET_NS_BEGIN
 
-Float Absolute::eval(const Vector& y, const Vector& t)
+Float Absolute::eval(const Vector& y, const Vector& t) const
 {
     Float sum = 0;
     for(decltype(y.size()) i=0; i<y.size(); i++)
@@ -11,7 +11,7 @@ Float Absolute::eval(const Vector& y, const Vector& t)
     return sum / y.size();
 }
 
-void Absolute::derivative(const Vector& y, const Vector& t, Vector& d)
+void Absolute::derivative(const Vector& y, const Vector& t, Vector& d) const
 {
     Float factor = Float(1) / t.size();
 

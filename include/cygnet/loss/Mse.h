@@ -7,8 +7,8 @@ CYGNET_NS_BEGIN
 
 struct Mse : Loss
 {
-    Float eval(const Vector& y, const Vector& t) override;
-    void derivative(const Vector& y, const Vector& t, Vector& d) override;
+    Float eval(const Vector& y, const Vector& t) const override;
+    void derivative(const Vector& y, const Vector& t, Vector& d) const override;
 };
 
 CYGNET_NS_END

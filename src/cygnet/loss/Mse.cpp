@@ -2,7 +2,7 @@
 
 CYGNET_NS_BEGIN
 
-Float Mse::eval(const Vector& y, const Vector& t)
+Float Mse::eval(const Vector& y, const Vector& t) const
 {
     Float sum = 0.0;
     for(decltype(y.size()) i = 0; i < y.size(); ++i)
@@ -10,7 +10,7 @@ Float Mse::eval(const Vector& y, const Vector& t)
     return sum / y.size();
 }
 
-void Mse::derivative(const Vector& y, const Vector& t, Vector& d)
+void Mse::derivative(const Vector& y, const Vector& t, Vector& d) const
 {
     auto factor = Float(2) / t.size();
     for(decltype(y.size()) i = 0; i < y.size(); ++i)

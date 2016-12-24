@@ -7,19 +7,23 @@
 CYGNET_NS_BEGIN
 
 struct Layer;
+struct Optimizer;
 struct LayerVisitor;
 
 struct Layers
 {
+    void add(Layer& layer);
+
     std::vector<Tensor> forward(const std::vector<Tensor>& first);
     void backward(const std::vector<Tensor>& first);
-
-    void add(Layer& layer);
-    void visit(LayerVisitor& visitor);
+    void update(Optimizer& opt, size_t batchSize);
 
     size_t levels() const;
     Layer& input();
     Layer& output();
+
+private:
+    void visit(LayerVisitor& visitor);
 
 private:
     std::vector<Layer*> layers;

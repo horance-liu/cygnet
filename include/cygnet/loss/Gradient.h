@@ -5,22 +5,27 @@
 
 CYGNET_NS_BEGIN
 
-template <typename E>
-void gradient(const Vector& y, const Vector& t, Vector& grad)
-{
-    E::derivative(y, t, grad);
-}
+struct Loss;
 
-template <typename E>
-void gradient(const Tensor& y, const Tensor& t, Tensor& grads)
+struct Gradient
 {
-    for (decltype(y.size()) i = 0; i < y.size(); i++)
-    {
-        Vector grad;
-        gradient<E>(y[i], t[i], grad);
-        grads.emplace_back(grad);
-    }
-}
+    Gradient(Loss&);
+
+    void calc( const Vector& y
+             , const Vector& t
+             , Vector& grad);
+
+    void calc( const Tensor& y
+             , const Tensor& t
+             , Tensor& grads);
+
+    void calc( const std::vector<Tensor>& y
+             , const std::vector<Tensor>& t
+             , std::vector<Tensor>& grads);
+
+private:
+    Loss& loss;
+};
 
 CYGNET_NS_END
 

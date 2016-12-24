@@ -7,8 +7,8 @@ CYGNET_NS_BEGIN
 
 struct Loss
 {
-    virtual Float eval(const Vector& y, const Vector& t) = 0;
-    virtual void derivative(const Vector& y, const Vector& t, Vector& d)  = 0;
+    virtual Float eval(const Vector& y, const Vector& t) const = 0;
+    virtual void derivative(const Vector& y, const Vector& t, Vector& d) const = 0;
     virtual ~Loss() {}
 };
 

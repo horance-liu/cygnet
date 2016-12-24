@@ -20,6 +20,9 @@ struct Network
               , size_t epoch = 1);
 
 private:
+    struct Backend;
+
+private:
     Optimizer& optimizer;
     Loss& loss;
     Layers layers;
