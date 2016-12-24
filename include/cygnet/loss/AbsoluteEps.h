@@ -1,16 +1,17 @@
 #ifndef H85D25947_2530_4612_BD4F_79840AEC9E27
 #define H85D25947_2530_4612_BD4F_79840AEC9E27
 
-#include <cygnet/base/Vector.h>
+#include <cygnet/loss/Loss.h>
 
 CYGNET_NS_BEGIN
 
-struct AbsoluteEps
+struct AbsoluteEps : Loss
 {
     explicit AbsoluteEps(Float fraction);
 
-    Float eval(const Vector& y, const Vector& t);
-    void derivative(const Vector& y, const Vector& t, Vector& d);
+private:
+    Float eval(const Vector& y, const Vector& t) override;
+    void derivative(const Vector& y, const Vector& t, Vector& d) override;
 
 private:
     Float eps;

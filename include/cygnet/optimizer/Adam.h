@@ -1,14 +1,17 @@
 #ifndef H1E6CF876_A310_4233_9202_AEC86BA5BDC5
 #define H1E6CF876_A310_4233_9202_AEC86BA5BDC5
 
-#include <cygnet/optimizer/CachedOptimizer.h>
+#include <cygnet/optimizer/Optimizer.h>
+#include "cygnet/optimizer/Caches.h"
 
 CYGNET_NS_BEGIN
 
-struct Adam : CachedOptimizer<2>
+struct Adam : private Caches<2>, Optimizer
 {
     Adam();
-    void update(const Vector& dw, Vector& w);
+
+private:
+    void update(const Vector& dw, Vector& w) override;
 
 private:
     float_t alpha; // learning rate

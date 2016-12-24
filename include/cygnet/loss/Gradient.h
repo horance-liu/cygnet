@@ -1,8 +1,7 @@
 #ifndef H3F8DAF5B_8217_4DC7_A0FE_3EBF314D2FA9
 #define H3F8DAF5B_8217_4DC7_A0FE_3EBF314D2FA9
 
-#include <cygnet/base/Vector.h>
-#include <cygnet/base/Tensor.h>
+#include <cygnet/base/Types.h>
 
 CYGNET_NS_BEGIN
 

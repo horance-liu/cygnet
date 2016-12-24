@@ -1,14 +1,16 @@
 #ifndef H4EF9F318_90AA_427A_A61B_D1B20A7665DE
 #define H4EF9F318_90AA_427A_A61B_D1B20A7665DE
 
-#include <cygnet/base/Vector.h>
+#include <cygnet/optimizer/Optimizer.h>
 
 CYGNET_NS_BEGIN
 
-struct Sgd
+struct Sgd : Optimizer
 {
     Sgd();
-    void update(const Vector& dw, Vector& w);
+
+private:
+    void update(const Vector& dw, Vector& w) override;
 
 private:
     Float alpha; // learning rate

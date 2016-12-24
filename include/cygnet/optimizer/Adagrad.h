@@ -1,14 +1,17 @@
 #ifndef H1DD1DA5F_B75E_4BCF_947A_7CC4CF0B702E
 #define H1DD1DA5F_B75E_4BCF_947A_7CC4CF0B702E
 
-#include <cygnet/optimizer/CachedOptimizer.h>
+#include <cygnet/optimizer/Optimizer.h>
+#include "cygnet/optimizer/Caches.h"
 
 CYGNET_NS_BEGIN
 
-struct Adagrad : CachedOptimizer<1>
+struct Adagrad : private Caches<1>, Optimizer
 {
     Adagrad();
-    void update(const Vector& dw, Vector& w);
+
+private:
+    void update(const Vector& dw, Vector& w) override;
 
 private:
     Float alpha;  // learning rate

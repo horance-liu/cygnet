@@ -1,14 +1,14 @@
 #ifndef HE189B48F_B32C_4A82_871C_21CF236EC4BF
 #define HE189B48F_B32C_4A82_871C_21CF236EC4BF
 
-#include <cygnet/base/Vector.h>
+#include <cygnet/activation/Activation.h>
 
 CYGNET_NS_BEGIN
 
-struct Elu
+struct Elu : Activation
 {
-    Float eval(const Vector& v, Index i)  const;
-    Float derivative(Float y) const;
+    Float eval(const Vector& v, Index i)  const override;
+    Float derivative(Float y) const override;
 };
 
 
