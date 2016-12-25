@@ -20,7 +20,7 @@ struct Network
               , size_t epoch = 1);
 
 private:
-    struct Backend;
+    struct MiniBatch;
 
 private:
     Optimizer& optimizer;

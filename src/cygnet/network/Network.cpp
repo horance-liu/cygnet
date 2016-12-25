@@ -9,9 +9,9 @@ Network::Network(Optimizer& optimizer, Loss& loss)
   : optimizer(optimizer), loss(loss)
 {}
 
-struct Network::Backend
+struct Network::MiniBatch
 {
-    Backend( Network& net
+    MiniBatch( Network& net
            , const std::vector<Tensor>& inputs
            , const std::vector<Tensor>& labels
            , size_t batchSize, size_t epoch)
@@ -77,18 +77,18 @@ namespace
         normalized = inputs;
     }
 
-    void normalize( const std::vector<Vector>& inputs
-                  , std::vector<Tensor>& normalized
-                  , const LayerProperty&)
+    void normalize( const LayerProperty&
+                  , const std::vector<Vector>& inputs
+                  , std::vector<Tensor>& normalized)
     {
         normalized.reserve(inputs.size());
         for (size_t i = 0; i < inputs.size(); i++)
             normalized.emplace_back( Tensor { inputs[i] } );
     }
 
-    void labelToVector(const std::vector<Label>& labels
-                      , std::vector<Vector>& vec
-                      , const LayerProperty& outLayer)
+    void labelToVector( const LayerProperty& outLayer
+                      , const std::vector<Label>& labels
+                      , std::vector<Vector>& vec)
     {
         size_t outdim = outLayer.getOutSize();
         vec.reserve(labels.size());
@@ -100,24 +100,24 @@ namespace
         }
     }
 
-    void normalize( const std::vector<Label>& labels
-                  , std::vector<Tensor>& normalized
-                  , const LayerProperty& outLayer)
+    void normalize( const LayerProperty& outLayer
+                  , const std::vector<Label>& labels
+                  , std::vector<Tensor>& normalized)
     {
         std::vector<Vector> vec;
-        labelToVector(labels, vec, outLayer);
+        labelToVector(outLayer, labels, vec);
 
         normalized.reserve(labels.size());
-        normalize(vec, normalized, outLayer);
+        normalize(outLayer, vec, normalized);
     }
 }
 
-#define BACKEND(action) \
-    Backend(*this, inputsTensor, labelsTensor, batchSize, epoch).action()
+#define MINI_BATCH(action) \
+   MiniBatch(*this, inputsTensor, labelsTensor, batchSize, epoch).action()
 
 #define NORMALIZE(prefix)             \
   std::vector<Tensor> prefix##Tensor; \
-  normalize(prefix, prefix##Tensor, layers.output())
+  normalize(layers.output(), prefix, prefix##Tensor)
 
 void Network::train
     ( const std::vector<Vector>&  inputs
@@ -126,7 +126,7 @@ void Network::train
 {
     NORMALIZE(inputs);
     NORMALIZE(labels);
-    BACKEND(fit);
+    MINI_BATCH(fit);
 }
 
 CYGNET_NS_END
